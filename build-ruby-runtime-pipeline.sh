@@ -186,8 +186,8 @@ sed -e "s|@@GENERATE_DOCKERFILE_IMAGE@@|${GENERATE_DOCKERFILE_IMAGE}|g;\
         s|@@DEFAULT_RUBY_VERSION@@|${DEFAULT_RUBY_VERSION}|g" \
   < ${DIRNAME}/ruby-pipeline/ruby-template.yaml.in > ${DIRNAME}/tmp/ruby-${RUNTIME_VERSION}.yaml
 gcloud storage cp ${DIRNAME}/tmp/ruby-${RUNTIME_VERSION}.yaml ${VERSIONED_GS_URL}
-echo "**** Uploaded runtime config to ${VERSIONED_GS_URL}"
+echo "***** Uploaded runtime config to ${VERSIONED_GS_URL}"
 if [ "${STAGING_FLAG}" = "true" ]; then
   gcloud storage cp ${VERSIONED_GS_URL} ${STAGING_GS_URL}
-  echo "**** Also promoted runtime config to ${STAGING_GS_URL}"
+  echo "***** Also promoted runtime config to ${STAGING_GS_URL}"
 fi
